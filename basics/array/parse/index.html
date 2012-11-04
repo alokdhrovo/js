@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Parse Array</title>
+	</head>
+	<body>
+		<div id="viewport"></div>
+		<script type="text/javascript">
+
+			var d,i,a;
+			d = document.getElementById('viewport');
+			i = 0;
+			a = ['30','10','50'];
+			a.push('40','60','20'); // Add items to the end of Array
+			a.sort(); // Sort order of Array
+			a.reverse(); // Reverse order of Array
+			while (i <= 5)
+			{
+				d.innerHTML += i + ', ';
+				i++;
+			}
+			for (i=0; i<a.length; i++)
+			{
+				d.innerHTML += '<li>' + a[i] + ' / ' + i + '</li>';
+			}
+				
+		</script>
+	</body>
+</html>
