@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Scope - Local</title>
+		<script type="text/javascript">
+
+			var example = {
+				scope: null
+			};
+
+			example.message = function(args)
+			{
+				if(args.log) console.log(args.log);
+				if(args.msg) document.getElementById('viewport').innerHTML = args.msg;
+			};
+
+			example.init = function(args)
+			{
+				var local = 'local';
+				example.scope = local;
+				example.message({ msg:example.scope, log:example.scope });
+			};
+		
+			document.addEventListener('DOMContentLoaded',example.init,false);
+
+		</script>
+	</head>
+	<body>
+		<div id="viewport"></div>
+	</body>
+</html>
