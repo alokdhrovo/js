@@ -7,8 +7,6 @@
 				scope: null
 			};
 
-			example.scope = 'global';
-
 			example.message = function(args)
 			{
 				if(args.log) console.log(args.log);
@@ -17,6 +15,7 @@
 
 			example.init = function(args)
 			{
+				example.scope = 'global';
 				example.message({ msg:example.scope, log:example.scope });
 			};
 		

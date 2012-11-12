@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Scope - Privileged</title>
+		<title>Scope - Prototype</title>
 		<script type="text/javascript">
 
 			var example = {
@@ -15,18 +15,20 @@
 
 			example.foo = function(args)
 			{
-				var bar = args.bar;
-				this.bar = function(args)
-				{
-					return bar + ' - ' + args.override;
-				};
+				this.bar = args.bar;
 			};
 
+			var foo = new example.foo({ bar: 'public' });
+
+			example.foo.prototype.prototype = function(args) 
+			{ 
+				return args.bar;
+			};
+			
 			example.init = function()
 			{
-				var privileged = new example.foo({ bar: 'privileged' });
-				example.scope = privileged.bar({ override: 'alter' });
-				example.message({ msg:example.scope, log:example.scope });
+				example.scope = foo.prototype({ bar: 'prototype' });
+				example.message({ msg: [foo.bar,example.scope], log:[foo.bar,example.scope] });
 			};
 		
 			document.addEventListener('DOMContentLoaded',example.init,false);
