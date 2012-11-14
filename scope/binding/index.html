@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Scope - Function</title>
+		<title>Scope - Binding</title>
 		<script type="text/javascript">
 
 			var example = {
@@ -13,21 +13,30 @@
 				if(args.msg) document.getElementById('viewport').innerHTML = args.msg;
 			};
 
-			var scope = 'global';
-
 			example.foo = function()
 			{
-				var scope = 'function';
+				this.scope = 'function';
 				this.bar = function()
 				{
-					var scope = 'local';
-				};
-				return scope;
+					return this.scope;
+				}.bind(example);
+			};
+
+			example.scope = 'global';
+
+			Function.prototype.bind = function(scope) 
+			{
+  				var that = this;
+  				return function() 
+				{
+    					return that.apply(scope,arguments);
+  				};
 			};
 
 			example.init = function()
 			{
-				example.scope = example.foo();
+				var foo = new example.foo();
+				example.scope = foo.bar();
 				example.message({ msg:example.scope, log:example.scope });
 			};
 		

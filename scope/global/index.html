@@ -13,9 +13,10 @@
 				if(args.msg) document.getElementById('viewport').innerHTML = args.msg;
 			};
 
+			example.scope = 'global';
+
 			example.init = function(args)
 			{
-				example.scope = 'global';
 				example.message({ msg:example.scope, log:example.scope });
 			};
 		
