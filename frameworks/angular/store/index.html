@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+	<head>
+		<meta charset="utf-8">
+		<title>Angular.js Store</title>
+                <script type="text/javascript" src="../angular.min.js"></script>
+                <script type="text/javascript" src="app.js"></script>
+		<link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	</head>	
+	<body ng-controller="StoreController as store">
+		<ul class="list-group" ng-repeat="product in store.products">
+      			<li>
+				<h3>
+					{{product.name}} 
+					<em>{{product.price}}</em>
+				</h3>
+				<p>{{product.description}}</p>
+				<button ng-show="product.canPurchase"> Add to Cart</button>
+			</li>
+		</ul>
+	</body>
+</html>
