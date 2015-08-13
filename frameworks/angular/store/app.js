@@ -17,7 +17,7 @@
                         price: 5.25,
                         description: 'this is an charlie product',
                         canPurchase: true,
-                }
+                },
 	];
 
 	var app = angular.module('gemStore',[]);
